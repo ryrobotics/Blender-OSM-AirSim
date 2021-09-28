@@ -93,9 +93,11 @@ class Renderer:
             obj = self.obj
             # finalize BMesh
             setBmesh(obj, self.bm)
+            # Add Default UV Map
+            bpy.ops.mesh.uv_texture_add({"object": obj})
             # assign OSM tags to the blender object
             assignTags(obj, element.tags)
-            layer.finalizeBlenderObject(obj)
+            # layer.finalizeBlenderObject(obj)
     
     @classmethod
     def end(self, app):

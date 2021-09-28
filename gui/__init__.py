@@ -422,6 +422,8 @@ class BLOSM_PT_Settings(bpy.types.Panel):
             box.prop(addon, "singleObject")
             
             layout.box().prop(addon, "ignoreGeoreferencing")
+
+            layout.box().prop(addon, "ignoreOSMBuildingColors")
             
             box = layout.box()
             box.label(text = "[Advanced]:")
@@ -500,7 +502,6 @@ class BLOSM_PT_Settings(bpy.types.Panel):
         layout.box().prop(addon, "gpxProjectOnTerrain")
         
         layout.box().prop(addon, "ignoreGeoreferencing")
-
 
 class BLOSM_PT_BpyProj(bpy.types.Panel):
     bl_label = "Projection"
@@ -692,6 +693,12 @@ class BlosmProperties(bpy.types.PropertyGroup):
         default = False
     )
     
+    ignoreOSMBuildingColors: bpy.props.BoolProperty(
+        name = "Ignore OSM Color Information",
+        description = "Ignore OSM Colors Information. Will use sane default colors",
+        default = False
+    )
+
     levelHeight: bpy.props.FloatProperty(
         name = "Level height",
         description = "Average height of a level in meters to use for OSM tags building:levels and building:min_level",

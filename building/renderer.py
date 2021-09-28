@@ -203,6 +203,8 @@ class BuildingRenderer(Renderer2d):
         """
         # material name is just the related color (either a hex or a CSS color)
         name = Manager.normalizeColor(element.tags.get(tags[partIndex]))
+
+        name = None if self.app.ignoreOSMBuildingColors else name
         
         if name is None:
             # <name> is invalid as a color name
@@ -267,6 +269,8 @@ class BuildingRenderer(Renderer2d):
         # material name is just the related color (either a hex or a CSS color)
         name = Manager.normalizeColor(element.tags.get(tags[roofIndex]))
         
+        name = None if self.app.ignoreOSMBuildingColors else name
+
         if name is None:
             # <name> is invalid as a color name
             if self.outline is element:
